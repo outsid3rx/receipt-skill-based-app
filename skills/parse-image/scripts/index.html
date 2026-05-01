@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head></head>
+
+  <body>
+    <script>
+      window['ai_edge_gallery_get_result'] = async (data) => {
+        try {
+          const url = new URL('https://rzdeli/list')
+
+          const utf8 = new TextEncoder().encode(JSON.stringify(data))
+          const base64 = btoa(String.fromCharCode(...utf8))
+
+          url.searchParams.set('q', base64)
+
+          return JSON.stringify({
+            result: 'Here is the interactive view.',
+            webview: {
+              url: url,
+              aspectRatio: 1.0,
+            },
+          })
+        } catch (e) {
+          return JSON.stringify({
+            error: `Failed: ${e.message}`,
+          })
+        }
+      }
+    </script>
+  </body>
+</html>
