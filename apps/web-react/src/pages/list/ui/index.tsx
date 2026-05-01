@@ -39,7 +39,7 @@ export const ListPage = reatomComponent(() => {
       title="Просмотр чека"
       subtitle="Выбери нужные позиции и плати только за свое. Чтобы оплатить долю от позиции нажми на кнопку справа от названия"
     >
-      <div className="flex max-w-md min-w-0 flex-col gap-2">
+      <div className="flex min-w-0 flex-col gap-2">
         {splitBillsAtom().map((item, index) => (
           <FieldLabel key={item.title + index}>
             <Field orientation="horizontal">
