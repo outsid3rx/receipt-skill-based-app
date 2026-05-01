@@ -3,10 +3,12 @@ import type { PropsWithChildren, ReactNode } from 'react'
 interface IProps {
   title: ReactNode
   subtitle: ReactNode
+  footer?: ReactNode
 }
 
 export const PageTemplate = ({
   children,
+  footer,
   subtitle,
   title,
 }: PropsWithChildren<IProps>) => (
@@ -17,6 +19,11 @@ export const PageTemplate = ({
         <p className="leading-7 [&:not(:first-child)]:my-2">{subtitle}</p>
       </div>
       {children}
+      {footer && (
+        <div className="sticky bottom-0 flex flex-col gap-2 border-t bg-background py-4">
+          {footer}
+        </div>
+      )}
     </div>
   </div>
 )
